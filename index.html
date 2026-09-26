@@ -22,14 +22,14 @@
 <body>
 
 <h1>Glass Launcher — Privacy Policy</h1>
-<p class="updated">Last updated: 27 August 2026</p>
+<p class="updated">Last updated: 27 September 2026</p>
 
 <p>Glass Launcher is a home screen replacement for Android, published by Pixelz Apps.
-This policy explains exactly what the app does with data on your device.</p>
+This policy explains exactly what the app does with data on your device, and what leaves it.</p>
 
-<p><strong>Glass Launcher has no accounts, no advertising, no analytics, and no crash
-reporting.</strong> Nothing you do in the launcher is tracked, profiled, or sold. The app
-makes exactly one network request, described below.</p>
+<p><strong>Glass Launcher has no accounts, and the developer operates no server.</strong>
+Nothing you do in the launcher is sold. Most of what the app reads never leaves your phone; the
+few things that do go to the services named below, each for one purpose.</p>
 
 <h2>What stays on your device</h2>
 
@@ -43,70 +43,146 @@ anywhere, and the developer has no way to see it:</p>
     <td>To draw the app grid, App Library and Search. This is what a launcher is.</td>
   </tr>
   <tr>
+    <td>Notifications (notification access)</td>
+    <td>Optional, and off unless you grant it in Android Settings. Lets the Dynamic Island show
+        what is playing, a timer or a call, and lets icons show badges. Notifications are read to
+        be displayed and are never stored or sent.</td>
+  </tr>
+  <tr>
+    <td>Phone calls (<code>ANSWER_PHONE_CALLS</code>)</td>
+    <td>Optional. Lets you answer or end a ringing call from the Dynamic Island.</td>
+  </tr>
+  <tr>
     <td>Calendar events (<code>READ_CALENDAR</code>)</td>
     <td>Optional. Shows your next event on the clock widget. If you decline the permission,
-        the line is hidden — the app does not invent a placeholder.</td>
+        the line is hidden.</td>
   </tr>
   <tr>
     <td>App usage history (<code>PACKAGE_USAGE_STATS</code>)</td>
-    <td>Optional, and off unless you grant it in Android Settings. Ranks the Suggestions
-        row by what you have actually been using. Without it, Suggestions falls back to
-        install date.</td>
+    <td>Optional, and off unless you grant it in Android Settings. Ranks Suggestions by what
+        you have actually been using. Without it, Suggestions falls back to install date.</td>
+  </tr>
+  <tr>
+    <td>Photos you choose as a wallpaper</td>
+    <td>Copied into the app's private storage so the home screen can draw them.</td>
   </tr>
   <tr>
     <td>Your home screen layout and preferences</td>
-    <td>Icon positions, folders, pages, widget choices and settings. Stored in the app's
-        own private storage.</td>
+    <td>Icon positions, folders, pages, widgets, hidden apps and settings, in the app's own
+        private storage. A backup is written only to a folder you choose.</td>
   </tr>
 </table>
 
-<h2>The one thing that leaves your device</h2>
+<h2>Accessibility services</h2>
 
-<p>If you add the weather widget <em>and</em> grant approximate location
-(<code>ACCESS_COARSE_LOCATION</code>), the app sends your coordinates to
-<a href="https://open-meteo.com/">Open-Meteo</a> to fetch a temperature and forecast:</p>
+<p>Glass Launcher includes two optional accessibility services, each off until you turn it on in
+Android Settings:</p>
 
 <ul>
-  <li>The request goes to <code>api.open-meteo.com</code> and contains
-      <strong>only</strong> latitude and longitude, <strong>rounded to two decimal
-      places</strong> (roughly a one-kilometre area) — never your precise position.</li>
-  <li>No device identifier, account, name, or any other data is attached. There is no API
-      key, because Open-Meteo does not require one.</li>
-  <li>The app uses your last known coarse location; it does not request a live GPS fix and
-      never accesses location in the background.</li>
-  <li>The result is displayed and discarded. It is not stored on any server belonging to
-      the developer — the developer operates no server at all.</li>
+  <li><strong>Dynamic Island and edge light</strong> uses the accessibility service to draw the
+      island and the edge light above other apps and the status bar.</li>
+  <li><strong>Lock screen</strong> uses it to lock your phone when you double-tap the home
+      screen.</li>
 </ul>
 
-<p>Open-Meteo's own handling of requests is described in their
-<a href="https://open-meteo.com/en/terms">terms and privacy notice</a>. If you do not add
-the weather widget, or decline the location permission, the app makes no network requests
-whatsoever.</p>
+<p>Neither service reads the contents of your screen, receives accessibility events, or
+performs actions on other apps. They are used only to draw and to lock.</p>
+
+<h2>What leaves your device</h2>
+
+<table>
+  <tr><th>Service</th><th>What is sent, and when</th></tr>
+  <tr>
+    <td><a href="https://firebase.google.com/">Google Analytics for Firebase</a></td>
+    <td>How the app is used, as a short list of fixed events: which screens are opened, which
+        settings and features are chosen (for example, which icon style or kind of widget), and
+        whether setup steps are completed. Also the device model, Android version, app version,
+        country and an app-instance identifier that Firebase creates.</td>
+  </tr>
+  <tr>
+    <td><a href="https://firebase.google.com/products/crashlytics">Firebase Crashlytics</a></td>
+    <td>When the app crashes or stops responding: the technical details of the failure, the
+        device model and Android version, and a few app settings in effect at the time (such as
+        the glass quality level and whether the Dynamic Island is on).</td>
+  </tr>
+  <tr>
+    <td><a href="https://admob.google.com/">Google AdMob</a></td>
+    <td>The free version shows ads from Google AdMob, which receives device information and, where
+        you allow it, the advertising ID, to show and measure ads. Glass Pro removes the ads.</td>
+  </tr>
+  <tr>
+    <td><a href="https://open-meteo.com/">Open-Meteo</a></td>
+    <td>Only if you add the weather widget <em>and</em> grant approximate location: your
+        latitude and longitude, <strong>rounded to two decimal places</strong> (roughly a
+        one-kilometre area), to fetch a forecast. No identifier is attached, and location is
+        never used in the background.</td>
+  </tr>
+  <tr>
+    <td><a href="https://pixabay.com/">Pixabay</a></td>
+    <td>Only if you browse or search the online wallpaper gallery: the words of your search, to
+        find images, which are then downloaded from Pixabay.</td>
+  </tr>
+  <tr>
+    <td><a href="https://play.google.com/">Google Play</a></td>
+    <td>Buying Glass Pro happens entirely in Google Play. The app only learns whether Glass Pro
+        is owned; it never sees payment details.</td>
+  </tr>
+</table>
+
+<h2>What is never sent</h2>
+
+<p>Glass Launcher never sends the list of apps you have installed or any app's name, the content
+of your notifications or which app posted them, anything you type (searches, folder or app
+names) to its analytics, your photos, your calendar, your precise location, or details of your
+calls. Analytics never uses the advertising ID.</p>
+
+<h2>Your choices</h2>
+
+<ul>
+  <li><strong>Share usage and crash reports</strong>, on the About page of the Control Center,
+      is on by default. Turning it off stops both Analytics and Crashlytics from sending
+      anything.</li>
+  <li>In the European Economic Area, the UK and Switzerland, Google's consent form asks you
+      before anything is used for ads or analytics, and Analytics uses no identifier for your
+      device unless you consent. <strong>Privacy choices</strong>, on the same About page, lets
+      you change your answer at any time. Crash reports are sent on the developer's legitimate
+      interest in fixing crashes, and stop when you turn the switch above off.</li>
+  <li>You can reset or delete your advertising ID in Android Settings, under Privacy → Ads.</li>
+</ul>
+
+<p>Google processes this data as a service provider under its own terms. See
+<a href="https://firebase.google.com/support/privacy">Privacy and Security in Firebase</a> and
+<a href="https://policies.google.com/technologies/partner-sites">how Google uses information from
+apps that use its services</a>.</p>
 
 <h2>Permissions, and what happens if you refuse</h2>
 
-<p>Every permission is optional and every one degrades to silence rather than to a guess:</p>
+<p>Every permission is optional, and every one degrades to silence rather than to a guess:</p>
 
 <ul>
   <li><strong>Location</strong> refused → the weather tile says so and shows no temperature.</li>
   <li><strong>Calendar</strong> refused → the agenda line is hidden entirely.</li>
   <li><strong>Usage access</strong> not granted → Suggestions ranks by install date.</li>
-  <li><strong>Internet</strong> is used only for the weather request described above.</li>
+  <li><strong>Notification access</strong> not granted → the Dynamic Island and badges stay
+      empty.</li>
+  <li><strong>Phone calls</strong> refused → the island shows a call but cannot answer it.</li>
 </ul>
 
-<p>The app does not request telephony, contacts, SMS, camera, microphone, precise location,
-or background location permissions.</p>
+<p>The app does not request contacts, SMS, camera, microphone, precise location or background
+location permissions.</p>
 
 <h2>Children</h2>
 
 <p>Glass Launcher is not directed at children and is declared for users aged 18 and over.
 It does not knowingly collect data from children.</p>
 
-<h2>Data deletion</h2>
+<h2>Data retention and deletion</h2>
 
-<p>All app data lives in Android's private storage for this app. Uninstalling Glass
-Launcher, or clearing its storage in Android Settings, permanently deletes everything it
-holds. There is no server-side copy to request deletion of, because there is no server.</p>
+<p>Everything on your device lives in Android's private storage for this app. Uninstalling Glass
+Launcher, or clearing its storage in Android Settings, permanently deletes it. Analytics and
+crash data are kept by Google only for a limited period, are not linked to your name or account,
+and stop being collected when you turn off <strong>Share usage and crash reports</strong>. To ask
+for data tied to your device to be deleted, write to the address below.</p>
 
 <h2>Changes to this policy</h2>
 
